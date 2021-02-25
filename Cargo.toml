@@ -39,7 +39,7 @@ std = [
 	"sp-std/std",
 	"sp-io/std",
 	"sp-core/std",
-	"fetch-price/std".
+	"fetch-price/std",
 	"price/std",
 	"stp258/std"
 ]
