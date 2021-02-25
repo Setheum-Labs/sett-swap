@@ -1,21 +1,20 @@
-//! # Atomic Swap
-//!
-//! A module for atomically sending funds.
-//!
-//! - [`atomic_swap::Config`](./trait.Config.html)
-//! - [`Call`](./enum.Call.html)
-//! - [`Module`](./struct.Module.html)
-//!
+//! # Sett-Swap
+//! A substrate pallet for atomically swapping funds from an origin to a target in SettCurrencies.
+//! 
+//! - [`atomic_swap::Trait`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/trait.Trait.html)
+//! - [`Call`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/enum.Call.html)
+//! - [`Module`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/struct.Module.html)
+//! 
 //! ## Overview
-//!
+//! 
 //! A module for atomically sending funds from an origin to a target. A proof
 //! is used to allow the target to approve (claim) the swap. If the swap is not
 //! claimed within a specified duration of time, the sender may cancel it.
-//!
+//! 
 //! ## Interface
-//!
+//! 
 //! ### Dispatchable Functions
-//!
+//! 
 //! * `create_swap` - called by a sender to register a new atomic swap
 //! * `claim_swap` - called by the target to approve a swap
 //! * `cancel_swap` - may be called by a sender after a specified duration
@@ -33,8 +32,8 @@ use frame_support::{
 	traits::{Get, Currency, ReservableCurrency, BalanceStatus},
 	weights::Weight,
 	dispatch::DispatchResult,
-};
-use frame_system::{self as system, ensure_signed};
+};e_system::{self as 
+use framsystem,ensure_root, ensure_signed, pallet_prelude::*};
 use codec::{Encode, Decode};
 use sp_runtime::RuntimeDebug;
 
