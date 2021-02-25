@@ -21,4 +21,4 @@ claimed within a specified duration of time, the sender may cancel it.
 
 ## Acknowledgement
 
-This Pallet is inspired by the [atomic-swap](https://github.com/paritytech/substrate/tree/master/frame/atomic-swap) pallet originally developed by [Parity Tech](https://github.com/paritytech), for reference check [The Substrate Frame Repo](https://github.com/paritytech/substrate/tree/master/frame).
+This Pallet is inspired by the [atomic-swap](https://github.com/paritytech/substrate/tree/master/frame/atomic-swap) pallet originally developed by [Parity Tech](https://github.com/open-web3-stack/), for reference check [The Substrate Frame Repo](https://github.com/paritytech/substrate/tree/master/frame).
