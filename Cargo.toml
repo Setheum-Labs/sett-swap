@@ -1,7 +1,7 @@
 [package]
-name = "pallet-atomic-swap"
+name = "sett-swap"
 version = "0.4.1"
-authors = ["Parity Technologies <admin@parity.io>"]
+authors = ["Setheum Labs"]
 edition = "2018"
 license = "Apache-2.0"
 homepage = "https://setheum.xyz"
@@ -18,12 +18,12 @@ codec = { package = "parity-scale-codec", version = "2.0.0", default-features = 
 fetch-price = { default-features = false, package = 'fetch-price', version = '0.4.1', git = 'https://github.com/Setheum-Labs/fetch-price' }
 price = { default-features = false, package = 'price', version = '0.4.1', git = 'https://github.com/Setheum-Labs/price' }
 stp258 = { default-features = false, package = 'stp258', version = '0.4.1', git = 'https://github.com/Setheum-Labs/stp258' }
-frame-support = { version = "3.0.0", default-features = false, path = "../support" }
-frame-system = { version = "3.0.0", default-features = false, path = "../system" }
-sp-runtime = { version = "3.0.0", default-features = false, path = "../../primitives/runtime" }
-sp-std = { version = "3.0.0", default-features = false, path = "../../primitives/std" }
-sp-io = { version = "3.0.0", default-features = false, path = "../../primitives/io" }
-sp-core = { version = "3.0.0", default-features = false, path = "../../primitives/core" }
+frame-support = { version = "3.0.0", default-features = false }
+frame-system = { version = "3.0.0", default-features = false }
+sp-runtime = { version = "3.0.0", default-features = false }
+sp-std = { version = "3.0.0", default-features = false }
+sp-io = { version = "3.0.0", default-features = false }
+sp-core = { version = "3.0.0", default-features = false }
 
 [dev-dependencies]
 pallet-balances = { version = "3.0.0", path = "../balances" }
