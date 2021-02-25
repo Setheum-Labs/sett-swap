@@ -1,12 +1,12 @@
 [package]
 name = "pallet-atomic-swap"
-version = "3.0.0"
+version = "0.4.1"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2018"
 license = "Apache-2.0"
-homepage = "https://substrate.dev"
-repository = "https://github.com/paritytech/substrate/"
-description = "FRAME atomic swap pallet"
+homepage = "https://setheum.xyz"
+repository = "https://github.com/Setheum-Labs/"
+description = "SERML SettSwap pallet"
 readme = "README.md"
 
 [package.metadata.docs.rs]
