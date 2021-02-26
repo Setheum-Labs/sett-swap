@@ -1,0 +1,45 @@
+[package]
+name = "sett-swap"
+version = "0.4.1"
+authors = ["Setheum Labs"]
+edition = "2018"
+license = "Apache-2.0"
+homepage = "https://setheum.xyz"
+repository = "https://github.com/Setheum-Labs/"
+description = "SERML SettSwap pallet"
+readme = "README.md"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+serde = { version = "1.0.101", optional = true }
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false }
+fetch-price = { default-features = false, package = 'fetch-price', version = '0.4.1', git = 'https://github.com/Setheum-Labs/fetch-price' }
+price = { default-features = false, package = 'price', version = '0.4.1', git = 'https://github.com/Setheum-Labs/price' }
+stp258 = { default-features = false, package = 'stp258', version = '0.4.1', git = 'https://github.com/Setheum-Labs/stp258' }
+frame-support = { version = "3.0.0", default-features = false }
+frame-system = { version = "3.0.0", default-features = false }
+sp-runtime = { version = "3.0.0", default-features = false }
+sp-std = { version = "3.0.0", default-features = false }
+sp-io = { version = "3.0.0", default-features = false }
+sp-core = { version = "3.0.0", default-features = false }
+
+[dev-dependencies]
+pallet-balances = { version = "3.0.0", path = "../balances" }
+
+[features]
+default = ["std"]
+std = [
+	"serde",
+	"codec/std",
+	"frame-support/std",
+	"frame-system/std",
+	"sp-runtime/std",
+	"sp-std/std",
+	"sp-io/std",
+	"sp-core/std",
+	"fetch-price/std",
+	"price/std",
+	"stp258/std"
+]
