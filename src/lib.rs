@@ -1,13 +1,9 @@
 //! # Sett-Swap
 //! A substrate pallet for atomically swapping funds from an origin to a target in SettCurrencies.
-//! 
-//! - [`atomic_swap::Trait`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/trait.Trait.html)
-//! - [`Call`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/enum.Call.html)
-//! - [`Module`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/struct.Module.html)
-//! 
+//!
 //! ## Overview
 //! 
-//! A module for atomically sending funds from an origin to a target. A proof
+//! A module for atomically swapping funds from an origin to a target. A proof
 //! is used to allow the target to approve (claim) the swap. If the swap is not
 //! claimed within a specified duration of time, the sender may cancel it.
 //! 
@@ -65,7 +61,7 @@ pub mod module {
 	/// Hashed proof type.
 	pub type HashedProof = [u8; 32];
 
-	/// Definition of a pending atomic swap action. It contains the following three phrases:
+	/// Definition of a pending sett swap action. It contains the following three phrases:
 	///
 	/// - **Reserve**: reserve the resources needed for a swap. This is to make sure that **Claim**
 	/// succeeds with best efforts.
@@ -84,7 +80,7 @@ pub mod module {
 		fn cancel(&self, source: &AccountId);
 	}
 
-	/// Atomic swap's pallet configuration trait.
+	/// SettSwap's pallet configuration trait.
 	#[pallet::config]
 	pub trait Config: frame_system::Config {
 		/// The overarching event type.
@@ -93,7 +89,7 @@ pub mod module {
 		type SwapAction: SwapAction<Self::AccountId, Self> + Parameter;
 		/// Limit of proof size.
 		///
-		/// Atomic swap is only atomic if once the proof is revealed, both parties can submit the proofs
+		/// An atomic swap is only atomic if once the proof is revealed, both parties can submit the proofs
 		/// on-chain. If A is the one that generates the proof, then it requires that either:
 		/// - A's blockchain has the same proof length limit as B's blockchain.
 		/// - Or A's blockchain has shorter proof length limit as B's blockchain.
@@ -128,7 +124,7 @@ pub mod module {
 	#[pallet::generate_deposit(pub(crate) fn deposit_event)]
 	#[pallet::metadata(T::AccountId = "AccountId")]
 	#[pallet::metadata(T::PendingSwap = "PendingSwap")]
-	/// Event of atomic swap pallet.
+	/// Event of SettSwap pallet.
 	pub enum Event<T: Config> {
 		/// Swap created. \[account, proof, swap\]
 		NewSwap(AccountId, HashedProof, PendingSwap),

@@ -1,7 +1,7 @@
 #![cfg(test)]
 
 use super::*;
-use crate as pallet_atomic_swap;
+use crate as sett_swap;
 
 use frame_support::parameter_types;
 use sp_core::H256;
@@ -13,7 +13,7 @@ use sp_runtime::{
 type UncheckedExtrinsic = frame_system::mocking::MockUncheckedExtrinsic<Test>;
 type Block = frame_system::mocking::MockBlock<Test>;
 
-frame_support::construct_runtime!(
+construct_runtime!(
 	pub enum Test where
 		Block = Block,
 		NodeBlock = Block,
@@ -21,7 +21,7 @@ frame_support::construct_runtime!(
 	{
 		System: frame_system::{Module, Call, Config, Storage, Event<T>},
 		Balances: pallet_balances::{Module, Call, Storage, Config<T>, Event<T>},
-		AtomicSwap: pallet_atomic_swap::{Module, Call, Event<T>},
+		SettSwap: sett_swap::{Module, Call, Event<T>},
 	}
 );
 
@@ -103,7 +103,7 @@ fn two_party_successful_swap() {
 
 	// A creates the swap on chain1.
 	chain1.execute_with(|| {
-		AtomicSwap::create_swap(
+		SettSwap::create_swap(
 			Origin::signed(A),
 			B,
 			hashed_proof.clone(),
@@ -117,7 +117,7 @@ fn two_party_successful_swap() {
 
 	// B creates the swap on chain2.
 	chain2.execute_with(|| {
-		AtomicSwap::create_swap(
+		SettSwap::create_swap(
 			Origin::signed(B),
 			A,
 			hashed_proof.clone(),
@@ -131,7 +131,7 @@ fn two_party_successful_swap() {
 
 	// A reveals the proof and claims the swap on chain2.
 	chain2.execute_with(|| {
-		AtomicSwap::claim_swap(
+		SettSwap::claim_swap(
 			Origin::signed(A),
 			proof.to_vec(),
 			BalanceSwapAction::new(75),
@@ -143,7 +143,7 @@ fn two_party_successful_swap() {
 
 	// B use the revealed proof to claim the swap on chain1.
 	chain1.execute_with(|| {
-		AtomicSwap::claim_swap(
+		SettSwap::claim_swap(
 			Origin::signed(B),
 			proof.to_vec(),
 			BalanceSwapAction::new(50),
