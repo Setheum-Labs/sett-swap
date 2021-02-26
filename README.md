@@ -1,13 +1,8 @@
 # Sett-Swap
 A substrate pallet for atomically swapping funds from an origin to a target in SettCurrencies.
-
-- [`atomic_swap::Trait`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/trait.Trait.html)
-- [`Call`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/enum.Call.html)
-- [`Module`](https://docs.rs/pallet-atomic-swap/latest/pallet_atomic_swap/struct.Module.html)
-
 ## Overview
 
-A module for atomically sending funds from an origin to a target. A proof
+A module for atomically swapping funds from an origin to a target. A proof
 is used to allow the target to approve (claim) the swap. If the swap is not
 claimed within a specified duration of time, the sender may cancel it.
 
