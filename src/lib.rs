@@ -65,6 +65,14 @@ pub mod module {
 	/// Hashed proof type.
 	pub type HashedProof = [u8; 32];
 
+
+	pub(crate) type BalanceOf<T> = 
+		<<T as Config>::SettCurrency as SettCurrency<<T as frame_system::Config>::AccountId>>::Balance;
+	pub(crate) type CurrencyIdOf<T> =
+		<<T as Config>::SettCurrency as SettCurrency<<T as frame_system::Config>::AccountId>>::CurrencyId;
+	pub(crate) type AmountOf<T> =
+		<<T as Config>::SettCurrency as ExtendedSettCurrency<<T as frame_system::Config>::AccountId>>::Amount;
+
 	/// Definition of a pending atomic swap action. It contains the following three phrases:
 	///
 	/// - **Reserve**: reserve the resources needed for a swap. This is to make sure that **Claim**
