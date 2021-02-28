@@ -1,5 +1,5 @@
 # Sett-Swap
-A substrate pallet for atomically swapping funds from an origin to a target in SettCurrencies.
+A substrate pallet for atomically swapping Currencies from an origin to a target.
 ## Overview
 
 A module for atomically swapping funds from an origin to a target. A proof
