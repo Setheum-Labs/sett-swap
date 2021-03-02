@@ -15,9 +15,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 serde = { version = "1.0.101", optional = true }
 codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false }
-fetch-price = { default-features = false, package = 'fetch-price', version = '0.4.1', git = 'https://github.com/Setheum-Labs/fetch-price' }
-price = { default-features = false, package = 'price', version = '0.4.1', git = 'https://github.com/Setheum-Labs/price' }
-stp258 = { default-features = false, package = 'stp258', version = '0.4.1', git = 'https://github.com/Setheum-Labs/stp258' }
+serp-traits = { version = '0.4.1-dev', git = "https://github.com/Setheum-Labs/serp-traits", branch = "master"}
 frame-support = { version = "3.0.0", default-features = false }
 frame-system = { version = "3.0.0", default-features = false }
 sp-runtime = { version = "3.0.0", default-features = false }
@@ -39,7 +37,5 @@ std = [
 	"sp-std/std",
 	"sp-io/std",
 	"sp-core/std",
-	"fetch-price/std",
-	"price/std",
-	"stp258/std"
+	"serp-traits/std",
 ]

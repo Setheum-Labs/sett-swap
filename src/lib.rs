@@ -33,11 +33,13 @@ use frame_support::{
 	weights::Weight,
 };
  
-use stp258::{
-	account::*, arithmetic::{Signed, SimpleArithmetic},
-	BalanceStatus, BasicCurrency, BasicLockableCurrency, 
-	BasicReservableCurrency,LockIdentifier, SettCurrency, 
-	LockableSettCurrency, ReservableSettCurrency
+use serp_traits::{
+	account::MergeAccount,
+	arithmetic::{Signed, SimpleArithmetic},
+	BalanceStatus, BasicCurrency, BasicCurrencyExtended, 
+	BasicLockableCurrency, BasicReservableCurrency,
+	LockIdentifier, SettCurrency, SettCurrencyExtended, 
+	SettCurrencyLockable, SettCurrencyReservable,
 };
 use sp_runtime::{
 	traits::{CheckedSub, MaybeSerializeDeserialize, StaticLookup, Zero},
