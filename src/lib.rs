@@ -39,7 +39,8 @@ use serp_traits::{
 	BalanceStatus, BasicCurrency, BasicCurrencyExtended, 
 	BasicLockableCurrency, BasicReservableCurrency,
 	LockIdentifier, SettCurrency, SettCurrencyExtended, 
-	SettCurrencyLockable, SettCurrencyReservable,
+	SettCurrencyLockable, SettCurrencyReservable, 
+	SettCurrencySwappable,
 };
 use sp_runtime::{
 	traits::{CheckedSub, MaybeSerializeDeserialize, StaticLookup, Zero},
@@ -79,7 +80,7 @@ pub mod module {
 		/// Weight for executing the operation.
 		fn weight(&self) -> Weight;
 		/// Cancel the resources reserved in `source`.
-		fn cancel(&self, source: &AccountId);
+		fn claim(&self, source: &AccountId);
 	}
 
 	/// SettSwap's pallet configuration trait.
