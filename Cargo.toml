@@ -1,6 +1,6 @@
 [package]
 name = "sett-swap"
-version = "0.4.1"
+version = "0.4.3-dev"
 authors = ["Setheum Labs"]
 edition = "2018"
 license = "Apache-2.0"
