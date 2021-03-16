@@ -153,3 +153,54 @@ fn two_party_successful_swap() {
 		assert_eq!(Balances::free_balance(B), 200 + 50);
 	});
 }
+
+
+
+#[test]
+fn settswap_in_basic_currency_should_work() {
+	// A generates a random proof. Keep it secret.
+	let proof: [u8; 2] = [4, 2];
+	// The hashed proof is the blake2_256 hash of the proof. This is public.
+	let hashed_proof = blake2_256(&proof);
+	ExtBuilder::default()
+		.one_hundred_for_alice_n_bob()
+		.build()
+		.execute_with(|| {
+			// Alice creates the swap.
+			assert_ok!(SettSwap::create_swap(Origin::signed(&ALICE), &BOB, hashed_proof.clone(), SettSwap::new(50), 1000));
+
+			assert_eq!(PalletBalances::free_balance(&ALICE), 100 - 50);
+			assert_eq!(PalletBalances::free_balance(&BOB), 200);
+
+			// Bob uses the revealed proof to claim the swap.
+			assert_ok!(SettSwap::claim_swap( Origin::signed(&BOB), proof.to_vec(), SettSwap::new(50)));
+
+			assert_eq!(PalletBalances::free_balance(&ALICE), 50);
+			assert_eq!(PalletBalances::free_balance(&BOB), 200 + 50);
+		});
+}
+
+#[test]
+fn settswap_in_sett_currency_should_work() {
+	// A generates a random proof. Keep it secret.
+	let proof: [u8; 2] = [4, 2];
+	// The hashed proof is the blake2_256 hash of the proof. This is public.
+	let hashed_proof = blake2_256(&proof);
+	ExtBuilder::default()
+		.one_hundred_for_alice_n_bob()
+		.build()
+		.execute_with(|| {
+			// Bob creates the swap.
+			assert_ok!(SettSwap::create_swap(Origin::signed(&BOB), &ALICE, hashed_proof.clone(), SettSwap::new(SETT_USD_ID, 75), 1000));
+
+			assert_eq!(Stp258::free_balance(SETT_USD_ID, &ALICE), 100);
+			assert_eq!(Stp258::free_balance(SETT_USD_ID, &BOB), 200 - 75);
+
+			// Alice reveals the proof and claims the swap.
+			assert_ok!(SettSwap::claim_swap( Origin::signed(&ALICE), proof.to_vec(), SettSwap::new(SETT_USD_ID, 75)));
+
+			assert_eq!(Stp258::free_balance(SETT_USD_ID, &ALICE), 100 + 75);
+			assert_eq!(Stp258::free_balance(SETT_USD_ID, &BOB), 125);
+
+		});
+}
