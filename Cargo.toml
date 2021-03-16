@@ -15,7 +15,6 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 serde = { version = "1.0.101", optional = true }
 codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false }
-serp-traits = { version = '0.4.3-dev', git = "https://github.com/Setheum-Labs/serp-traits", branch = "master"}
 frame-support = { version = "3.0.0", default-features = false }
 frame-system = { version = "3.0.0", default-features = false }
 sp-runtime = { version = "3.0.0", default-features = false }
@@ -23,8 +22,18 @@ sp-std = { version = "3.0.0", default-features = false }
 sp-io = { version = "3.0.0", default-features = false }
 sp-core = { version = "3.0.0", default-features = false }
 
+stp258 = { package = 'stp258', version = '0.4.3-dev', default-features = false, git = 'https://github.com/Setheum-Labs/stp258' }
+stp258-tokens = { package = 'stp258-tokens', version = '0.4.3-dev', default-features = false, git = 'https://github.com/Setheum-Labs/stp258-tokens' }
+serp-traits = { package = 'serp-traits', version = '0.4.3-dev', git = "https://github.com/Setheum-Labs/serp-traits"}
+
+funty = { version = "1.1.0", default-features = false } # https://github.com/bitvecto-rs/bitvec/issues/105
+
+num-rational = { default-features = false, version = '0.3.2' }
+num-traits = { version = "0.2.14", default-features = false }
+fixed = { default-features = false, version = '1.6.0' }
+
 [dev-dependencies]
-pallet-balances = { version = "3.0.0", path = "../balances" }
+pallet-balances = "3.0.0"
 
 [features]
 default = ["std"]
